@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TropIași — fructe tropicale crescute în Iași.">
+  <title>TropIași — Fructe tropicale crescute în Iași</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #174d35;
+      --green-2: #236b48;
+      --lime: #b9e85c;
+      --cream: #fff9e9;
+      --orange: #ff8b2d;
+      --pink: #ef4f75;
+      --ink: #17251d;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(23, 77, 53, .14);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1120px, calc(100% - 28px));
+      z-index: 20;
+      background: rgba(255, 249, 233, .88);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(23, 77, 53, .1);
+      border-radius: 999px;
+      padding: 10px 14px 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 35px rgba(23,77,53,.08);
+    }
+
+    .brand-logo {
+      width: 39px;
+      height: 39px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: var(--green);
+      color: var(--lime);
+      font-size: 19px;
+      overflow: hidden;
+    }
+
+    /* Regula nouă adăugată pentru imagine */
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; 
+    }
+
+
+    /* Regula nouă adăugată pentru imagine */
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; 
+    }
+
+
+
+    .nav-links {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .title {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      padding: 10px 15px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { background: rgba(23,77,53,.08); }
+
+    .nav-cta {
+      background: var(--green) !important;
+      color: white;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 790px;
+      padding: 155px 0 90px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(255,249,233,.98) 0%, rgba(255,249,233,.9) 35%, rgba(255,249,233,.35) 68%, rgba(255,249,233,.1) 100%),
+        url("tropical-bg.png") center/cover;
+    }
+
+    .hero-content {
+      width: min(650px, 100%);
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #e8f5c9;
+      color: var(--green);
+      border: 1px solid #d3e9a8;
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3 { font-family: Outfit, sans-serif; }
+
+    h1 {
+      font-size: clamp(54px, 8vw, 92px);
+      line-height: .92;
+      letter-spacing: -4px;
+      color: var(--green);
+      max-width: 720px;
+    }
+
+    h1 span { color: var(--orange); }
+
+    .hero p {
+      margin-top: 25px;
+      max-width: 560px;
+      font-size: 19px;
+      line-height: 1.65;
+      color: #435249;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 50px;
+      padding: 0 21px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--green);
+      color: white;
+      box-shadow: 0 12px 25px rgba(23,77,53,.2);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.7);
+      border-color: rgba(23,77,53,.15);
+      color: var(--green);
+    }
+
+    .hero-note {
+      margin-top: 20px;
+      font-size: 13px !important;
+      color: #66736b !important;
+    }
+
+    /* SECTION */
+    section { padding: 100px 0; }
+
+    .section-kicker {
+      color: var(--orange);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: -2px;
+      color: var(--green);
+    }
+
+    .section-subtitle {
+      color: #647168;
+      line-height: 1.7;
+      max-width: 650px;
+      margin-top: 16px;
+    }
+
+    /* PRODUCTS */
+    .products {
+      background: #f4f0dd;
+    }
+
+    .product-grid {
+      margin-top: 45px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 17px;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 25px;
+      min-height: 270px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: .25s ease;
+    }
+
+    .card:hover { transform: translateY(-5px); }
+
+    .fruit-icon {
+      width: 74px;
+      height: 74px;
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      font-size: 39px;
+      background: #edf6d7;
+      margin-bottom: 40px;
+    }
+
+    .card h3 {
+      font-size: 24px;
+      color: var(--green);
+    }
+
+    .card p {
+      margin-top: 8px;
+      color: #707c74;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-art {
+      min-height: 440px;
+      border-radius: 42px;
+      background:
+        linear-gradient(145deg, rgba(23,77,53,.2), rgba(23,77,53,.65)),
+        url("tropical-bg.png") center/cover;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: 25px;
+      left: 25px;
+      right: 25px;
+      background: rgba(255,249,233,.93);
+      backdrop-filter: blur(12px);
+      border-radius: 22px;
+      padding: 18px;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .about-copy p {
+      margin-top: 20px;
+      line-height: 1.8;
+      color: #56645c;
+    }
+
+    .values {
+      display: grid;
+      gap: 13px;
+      margin-top: 27px;
+    }
+
+    .value {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+      padding: 14px;
+      background: #f6f4e9;
+      border-radius: 17px;
+    }
+
+    .value-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      background: var(--lime);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+    }
+
+    .value strong { display: block; color: var(--green); }
+    .value small { color: #718077; line-height: 1.4; }
+
+    /* CONTACT */
+    .contact {
+      background: var(--green);
+      color: white;
+    }
+
+    .contact .section-title { color: white; }
+
+    .contact .section-subtitle { color: #d1e1d8; }
+
+    .contact-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+    }
+
+    .contact-box {
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 25px;
+      padding: 27px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .contact-row:last-child { border-bottom: 0; }
+
+    .contact-icon {
+      width: 43px;
+      height: 43px;
+      border-radius: 14px;
+      background: var(--lime);
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+    }
+
+    .contact-label {
+      font-size: 12px;
+      color: #b9ccc1;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .contact-value {
+      margin-top: 2px;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    /* PLACEHOLDER CONTACT:
+       Înlocuiește valorile:
+       Telefon: +40 7XX XXX XXX
+       Email: contact@tropiasi.ro
+    */
+
+    .logo-placeholder {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border: 2px dashed rgba(255,255,255,.2);
+      border-radius: 22px;
+      padding: 30px;
+      color: #bdd0c5;
+    }
+
+    .logo-placeholder strong {
+      display: block;
+      color: white;
+      font-size: 22px;
+      margin-bottom: 7px;
+    }
+
+    footer {
+      padding: 28px 0;
+      background: #103a29;
+      color: #b9ccc1;
+      font-size: 13px;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-art { min-height: 330px; }
+      .hero { min-height: 720px; }
+    }
+
+    @media (max-width: 650px) {
+      nav { border-radius: 24px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .product-grid { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -2.5px; }
+      section { padding: 75px 0; }
+      .hero { padding-top: 135px; }
+      footer .container { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a class="brand" href="#">
+      <!-- PLACEHOLDER LOGO / ICON -->
+      <span class="brand-logo"><img src="logo.png"></span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#fructe">Fructe</a>
+      <a href="#despre">Despre noi</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">🌱 Crescute în Iași</div>
+
+          <h1>
+            Gust de <span>tropice</span>, crescut local.
+          </h1>
+
+          <p>
+            Descoperă fructe tropicale cultivate cu grijă în Iași.
+            Un mic business local pentru cei care vor ceva diferit,
+            proaspăt și plin de savoare.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#fructe">Descoperă fructele →</a>
+            <a class="btn btn-secondary" href="#contact">Vorbește cu noi</a>
+          </div>
+
+          <p class="hero-note">
+            📍 Iași, România · Producție locală
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="products" id="fructe">
+      <div class="container">
+        <div class="section-kicker">Ce cultivăm</div>
+        <h2 class="section-title">Fructe cu personalitate.</h2>
+        <p class="section-subtitle">
+          Sortimentul se poate schimba în funcție de sezon și recoltă.
+          Adaugă aici fructele pe care le cultivi efectiv.
+        </p>
+
+        <div class="product-grid">
+          <article class="card">
+            <div class="fruit-icon"><img src="fructe/1.png" width="50" height="50"></img></div>
+            <h3>Fructul Pasiunii</h3>
+            <p>Fruct rotund cu coajă mov sau galbenă și pulpa galben-portocalie cu multe semințe comestibile. Gustul este dulce-acrișor și foarte aromat.</p>
+          </article>
+
+          <article class="card">
+            <div class="fruit-icon"><img src="fructe/2.jpg" width="50" height="50"></img></div>
+            <h3>Jackfruit</h3>
+            <p>Cel mai mare fruct care crește pe un copac, poate ajunge la 50 kg. Pulpa galbenă are gust dulce, asemănător cu mango și banană.</p>
+          </article>
+
+          <article class="card">
+            <div class="fruit-icon"><img src="fructe/3.jpg" width="50" height="50"></img></div>
+            <h3>Litchi</h3>
+            <p>Fruct mic rotund cu coajă roșie și aspră și pulpă albă, translucidă, dulce și parfumată în jurul unui sâmbure mare.</p>
+          </article>
+
+          <article class="card">
+            <div class="fruit-icon"><img src="fructe/4.png" width="50" height="50"></img></div>
+            <h3>Mini Kiwi</h3>
+            <p>Fruct mic, dulce și aromat, cu coajă fină și comestibilă. Este bogat în vitamine și perfect pentru gustări proaspete sau deserturi.</p>
+          </article>
+
+          <article class="card">
+            <div class="fruit-icon"><img src="fructe/5.png" width="50" height="50"></img></div>
+            <h3>Banana Dwarf Cavendish</h3>
+            <p>Soi compact de bananier, potrivit pentru spații mici și cultivare în ghiveci. Produce banane dulci și aromate, iar planta are frunze mari, tropicale și un aspect decorativ.</p>
+          </article>
+          
+          <article class="card">
+            <div class="fruit-icon"><img src="fructe/6.png" width="50" height="50"></img></div>
+            <h3>Monstera Deliciosa</h3>
+            <p>Produce fructe exotice alungite, cu gust dulce și aromă tropicală, asemănătoare unui amestec de ananas și banană. Se coc treptat și trebuie consumate doar când sunt complet coapte.</p>
+          </article>
+
+          <article class="card">
+            <div class="fruit-icon"><img src="fructe/7.jpg" width="50" height="50"></img></div>
+            <h3>Smochine</h3>
+            <p>Fruct dulce și aromat, cu pulpă moale și suculentă și numeroase semințe crocante. Se poate consuma proaspăt sau uscat și este apreciat pentru gustul său bogat.</p>
+          </article>
+          
+          <article class="card">
+            <div class="fruit-icon"><img src="fructe/8.png" width="50" height="50"></img></div>
+            <h3>Ananas</h3>
+            <p>Fruct tropical dulce și aromat, cu pulpă suculentă și răcoritoare. Are un gust echilibrat între dulce și ușor acrișor, fiind perfect pentru consum proaspăt sau deserturi.</p>
+          </article>
+
+          <article class="card">
+            <div class="fruit-icon"><img src="fructe/9.jpg" width="50" height="50"></img></div>
+            <h3>Fructul Dragonului</h3>
+            <p>Fruct exotic cu coajă spectaculoasă și pulpă albă sau roz, presărată cu semințe mici. Are un gust delicat, ușor dulce și răcoritor, ideal pentru consum proaspăt.</p>
+          </article>
+
+          <article class="card">
+            <div class="fruit-icon"><img src="fructe/10.png" width="50" height="50"></img></div>
+            <h3>Mango</h3>
+            <p>Fruct tropical dulce și parfumat, cu pulpă moale, suculentă și aromată. Are un gust bogat, ușor exotic, fiind delicios consumat proaspăt sau în deserturi și smoothie-uri.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="despre">
+      <div class="container about-grid">
+        <div class="about-art">
+          <div class="about-badge">
+            🌴 Tropical, dar de la noi.<br>
+            <span style="font-weight:500;color:#63736a">
+              Crescut cu răbdare în Iași.
+            </span>
+          </div>
+        </div>
+
+        <div class="about-copy">
+          <div class="section-kicker">Despre TropIași</div>
+          <h2 class="section-title">Un colț tropical în Iași.</h2>
+
+          <p>
+            TropIași este un mic business local dedicat cultivării
+            fructelor tropicale în condiții adaptate climatului din Iași.
+            Povestea noastră începe cu pasiunea pentru plante exotice și
+            dorința de a transforma această pasiune în fructe reale,
+            crescute aproape de casă.
+          </p>
+
+          <p>
+            <strong>PLACEHOLDER:</strong> Înlocuiește acest text cu povestea
+            ta reală — când ai început, ce cultivi, cum le îngrijești și
+            ce face TropIași diferit.
+          </p>
+
+          <div class="values">
+            <div class="value">
+              <div class="value-icon">🌱</div>
+              <div>
+                <strong>Cultivare locală</strong>
+                <small>Fructe crescute în Iași, în loturi mici.</small>
+              </div>
+            </div>
+
+            <div class="value">
+              <div class="value-icon">☀️</div>
+              <div>
+                <strong>Cu răbdare</strong>
+                <small>Plante îngrijite atent de la răsad până la recoltă.</small>
+              </div>
+            </div>
+
+            <div class="value">
+              <div class="value-icon">🥭</div>
+              <div>
+                <strong>Gust autentic</strong>
+                <small>Accent pe calitate și prospețime.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-kicker">Contact</div>
+        <h2 class="section-title">Hai să vorbim.</h2>
+        <p class="section-subtitle">
+          Pentru comenzi, disponibilitate sau întrebări despre plante și fructe,
+          contactează TropIași.
+        </p>
+
+        <div class="contact-grid">
+
+            <div class="contact-row">
+              <div class="contact-icon">✉️</div>
+              <div>
+                <div class="contact-label">Email</div>
+                <div class="contact-value">
+                  <a href="mailto:tropiasiofficial@gmail.com">tropiasiofficial@gmail.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-icon">📍</div>
+              <div>
+                <div class="contact-label">Locație</div>
+                <div class="contact-value">Iași, România</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER PENTRU LOGO / ICON -->
+          <div class="contact-box">
+            <div class="logo-placeholder">
+              <div>
+                <img src="logo.png"></img>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 TropIași. Toate drepturile rezervate.</span>
+      <span>Fructe tropicale crescute în Iași 🌴</span>
+    </div>
+  </footer>
+
+</body>
+</html>
